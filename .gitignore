@@ -1,0 +1,19 @@
+node_modules/
+unpackage/
+.hbuilderx/
+.DS_Store
+dist/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Database
+backend/bladder_cancer.db
+
+# Secrets
+backend/.env
+
+# Vercel
+.vercel
