@@ -25,7 +25,7 @@ app.include_router(analyze.router)
 app.include_router(history.router)
 app.include_router(user.router)
 
-_static_dir = os.path.join(os.path.dirname(__file__), "static")
+_static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")
 _assets_dir = os.path.join(_static_dir, "assets")
 if os.path.isdir(_assets_dir):
     app.mount("/assets", StaticFiles(directory=_assets_dir), name="assets")
