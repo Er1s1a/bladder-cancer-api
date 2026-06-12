@@ -36,8 +36,9 @@ def health():
     return {"status": "ok"}
 
 
+@app.get("/")
 @app.get("/{path:path}")
-async def serve_spa(path: str):
+async def serve_spa(path: str = ""):
     if path.startswith("api/"):
         return {"message": "Not Found", "code": 404}
     index_path = os.path.join(_static_dir, "index.html")
