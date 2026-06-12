@@ -28,8 +28,11 @@ app.include_router(user.router)
 _this_file = pathlib.Path(__file__).resolve()
 _static_dir = str(_this_file.parent.parent / "static")
 _assets_dir = str(_this_file.parent.parent / "static" / "assets")
+_public_dir = str(_this_file.parent.parent / "static" / "static")
 if os.path.isdir(_assets_dir):
     app.mount("/assets", StaticFiles(directory=_assets_dir), name="assets")
+if os.path.isdir(_public_dir):
+    app.mount("/static", StaticFiles(directory=_public_dir), name="public")
 
 
 @app.get("/health")
