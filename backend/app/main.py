@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from .database import engine, Base
 from .routers import auth, analyze, history, user
-import os
+import os, pathlib
 
 Base.metadata.create_all(bind=engine)
 
@@ -25,8 +25,9 @@ app.include_router(analyze.router)
 app.include_router(history.router)
 app.include_router(user.router)
 
-_static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")
-_assets_dir = os.path.join(_static_dir, "assets")
+_this_file = pathlib.Path(__file__).resolve()
+_static_dir = str(_this_file.parent.parent / "static")
+_assets_dir = str(_this_file.parent.parent / "static" / "assets")
 if os.path.isdir(_assets_dir):
     app.mount("/assets", StaticFiles(directory=_assets_dir), name="assets")
 
