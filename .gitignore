@@ -9,10 +9,12 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Database
-backend/bladder_cancer.db
-
-# Secrets
+# Database & secrets
+*.db
+*.db-wal
+*.db-shm
+auth*
+help*
 backend/.env
 
 # Vercel
